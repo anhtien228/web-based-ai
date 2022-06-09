@@ -1,0 +1,306 @@
+html, body {
+  min-height:100%;
+  max-height:100%;
+  height:100%;
+  font-family: "Manrope";
+  font-size:14px;
+  background:#fff
+}
+
+h3 {
+  font-size: 32px;
+  font-family: "Manrope Extra Bold";
+}
+
+h4 {
+  font-size: 20px;
+  font-family: "Manrope Bold";
+}
+
+.spacer {
+  padding-top: 20px;
+  padding-bottom: 20px
+}
+
+.input-nlp-text, .output-nlp-text {
+  height: 50vh;
+  width: 100%;
+}
+
+.no-border {
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.js .loading::before,
+.js .loading::after {
+    content: '';
+    position: fixed;
+    z-index: 1000;
+}
+
+.js .loading::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg);
+}
+
+.js .loading::after {
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    border-radius: 50%;
+    opacity: 0.4;
+    background: var(--color-link);
+    animation: loaderAnim 0.7s linear infinite alternate forwards;
+}
+
+@keyframes loaderAnim {
+    to {
+        opacity: 1;
+        transform: scale3d(0.5, 0.5, 1);
+    }
+}
+
+.nav-tabs {
+  width: 100vh;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-width: 0px;
+  -ms-flex-flow: row-reverse nowrap;
+  flex-flow: row-reverse nowrap;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: center;
+  -webkit-transform: rotate(-90deg) translateX(-100%);
+  transform: rotate(-90deg) translateX(-100%);
+  -webkit-transform-origin: 0% 0%;
+  transform-origin: 0% 0%;
+  padding-left: 0;
+}
+
+.nav-tabs > li {
+  line-height: 5rem;
+  display: block;
+  padding: 9.6px 16px;
+  padding: 0.6rem 3rem;
+  list-style-type: none;
+}
+
+.nav-tabs > li  > a {
+  font-family: "Manrope Light";
+  color: #1d1d1d;
+  font-size: 16px;
+}
+
+.nav-tabs-r {
+  width: 100vh;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-width: 0px;
+  -ms-flex-flow: row-reverse nowrap;
+  flex-flow: row-reverse nowrap;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: center;
+  -webkit-transform: rotate(-90deg) translateX(-100%);
+  transform: rotate(-90deg) translateX(-100%);
+  -webkit-transform-origin: 100% 0%;
+  transform-origin: 100% 0%;
+  padding-right: 0;
+}
+
+.nav-tabs-r > li {
+  line-height: 5rem;
+  display: block;
+  padding: 0.6rem 3rem;
+  list-style-type: none;
+}
+
+.nav-tabs-r > li  > a {
+  font-family: "Manrope Light";
+  color: #1d1d1d;
+  font-size: 16px;
+}
+
+p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style:none
+}
+
+ul {    
+  margin:0
+}
+
+.link {
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
+.link::before,
+.link::after {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  top: 100%;
+  left: 0;
+  pointer-events: none;
+}
+
+.link::before {
+  content: '';
+  /* show by default */
+}
+
+.link--io::before {
+  transform-origin: 100% 50%;
+  transform: scale3d(0, 1, 1);
+  transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.link--io:hover::before {
+  transform-origin: 0% 50%;
+  transform: scale3d(1, 1, 1);
+  transition-timing-function: cubic-bezier(0.4, 1, 0.8, 1);
+}
+
+.link--io::after {
+  content: '';
+  top: calc(100% + 4px);
+  transform-origin: 0% 50%;
+  transform: scale3d(0, 1, 1);
+  transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.link--io:hover::after {
+  transform-origin: 100% 50%;
+  transform: scale3d(1, 1, 1);
+  transition-timing-function: cubic-bezier(0.4, 1, 0.8, 1);
+}
+
+#metadata {
+  font-family: monospace;
+}
+
+.button {
+	pointer-events: auto;
+	cursor: pointer;
+	background: #e7e7e7;
+	border: none;
+	padding: 1.5rem 3rem;
+	margin: 0;
+	font-family: "Manrope Light";
+	font-size: inherit;
+	position: relative;
+	display: inline-block;
+}
+
+.button::before,
+.button::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.button--anthe {
+	font-family: bely-display, sans-serif;
+	color: #fff;
+	background: none;
+}
+
+.button--anthe::before {
+	content: '';
+	background: #000;
+	-webkit-clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+	clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+	transition: clip-path 0.4s cubic-bezier(0.2, 1, 0.8, 1), -webkit-clip-path 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+}
+
+.button--anthe:hover::before {
+	background: #000;
+	-webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+	clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+
+.button--anthe span {
+	display: block;
+	mix-blend-mode: difference;
+	transition: transform 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+}
+
+.button--anthe:hover span {
+	transform: translate3d(-10px,0,0);
+}
+
+
+/*======================== FONT ===============================*/
+@font-face {
+    font-family: "Gilroy Regular";
+    src: url("../fonts/gilroy-regular.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Gilroy Medium";
+    src: url("../fonts/gilroy_medium.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Gilroy Bold";
+    src: url("../fonts/gilroy-bold.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Manrope Bold";
+    src: url("../fonts/Manrope-Bold.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Manrope Extra Bold";
+    src: url("../fonts/Manrope-ExtraBold.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Manrope Extra Light";
+    src: url("../fonts/Manrope-ExtraLight.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Manrope Light";
+    src: url("../fonts/Manrope-Light.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Manrope Medium";
+    src: url("../fonts/Manrope-Medium.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Manrope Regular";
+    src: url("../fonts/Manrope-Regular.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Manrope Semi Bold";
+    src: url("../fonts/Manrope-SemiBold.otf") format("opentype");
+  }
