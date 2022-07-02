@@ -5,11 +5,17 @@ import __main__
 import sys
 
 app = Flask(__name__)
-shortTokenizer = BartTokenizer.from_pretrained('./ml/distilbart-xsum-12-6/', local_files_only=True)
-shortModel = BartForConditionalGeneration.from_pretrained('./ml/distilbart-xsum-12-6/', local_files_only=True)
+# shortTokenizer = BartTokenizer.from_pretrained('./ml/distilbart-xsum-12-6/', local_files_only=True)
+# shortModel = BartForConditionalGeneration.from_pretrained('./ml/distilbart-xsum-12-6/', local_files_only=True)
 
-longTokenizer = BartTokenizer.from_pretrained('./ml/distilbart-cnn-12-6/', local_files_only=True)
-longModel = BartForConditionalGeneration.from_pretrained('./ml/distilbart-cnn-12-6/', local_files_only=True)
+# longTokenizer = BartTokenizer.from_pretrained('./ml/distilbart-cnn-12-6/', local_files_only=True)
+# longModel = BartForConditionalGeneration.from_pretrained('./ml/distilbart-cnn-12-6/', local_files_only=True)
+
+shortTokenizer = BartTokenizer.from_pretrained('distilbart-xsum-12-6')
+shortModel = BartForConditionalGeneration.from_pretrained('distilbart-xsum-12-6')
+
+longTokenizer = BartTokenizer.from_pretrained('distilbart-cnn-12-6/')
+longModel = BartForConditionalGeneration.from_pretrained('distilbart-cnn-12-6')
 
 @app.route('/')
 def home():
