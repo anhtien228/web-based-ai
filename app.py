@@ -1,5 +1,5 @@
 from lib2to3.pgen2 import token
-from flask import Flask, render_template, request, session, jsonify
+from flask import Flask, render_template, request, jsonify
 from transformers import BartTokenizer, BartForConditionalGeneration
 import __main__
 import sys
@@ -72,9 +72,10 @@ def summarize(text, num_beams=5, length_penalty=2.0, max_length=50, min_length=1
 
 
 def main():
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-    app.run(debug=True)
+    # app.config['TEMPLATES_AUTO_RELOAD'] = True
+    # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+    # app.run(debug=True)
+    app.run()
 
 if __name__ == '__main__':
     print("Loading BART model and tokenzier . . .")
