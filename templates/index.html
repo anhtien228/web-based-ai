@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" class="js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/all.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script src="{{ url_for('static', filename='js/style.js') }}"></script> -->
+  </head>
+  <body>
+      <ul class="nav nav-tabs">
+        <li><a href="#" class="link link--io">creator</a></li>
+        <li><a href="#" class="link link--io">development</a></li>
+        <li><a href="#" class="link link--io">feedback</a></li>
+      </ul>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 my-4">
+            <h3 class="text-center page-title">
+              summary
+            </h3>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-1"></div>
+          <div class="col-md-4 input-field">
+            <div class="row mb-4 flex-col-50">
+              <div class="col-md-8">
+                <h4 class="main-heading">
+                  put your text here
+                </h4>
+              </div>
+              <div class="col-md-4 switch-format">
+                <div class="toggle">
+                  <input type="radio" name="langSel" value="eng" id="engLang" checked="checked" />
+                  <label for="engLang">eng</label>
+                  <input type="radio" name="langSel" value="vie" id="vieLang" />
+                  <label for="vieLang">vie</label>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <form id="input_form" class="form-horizontal requires-validation" method="post" novalidate>
+                  <textarea type="text" class="input-nlp-text form-control shadow-none" id="input_text" name="input_text"
+                  placeholder="Enter the documents here >" aria-label="Input Document" required value="@Request["inputText"]"></textarea> 
+                  <!-- <div class="valid-feedback">
+                    Text looks good!
+                 </div>
+                 <div class="invalid-feedback">
+                    Text is required!
+                 </div>-->
+                </form>
+              </div>
+            </div>
+            <div class="row text-white" id="metadata">
+              <div class="col-md-3 bg-black text-center flex-col" id="cnt-paras">
+                 <p>0 par</p>
+              </div>
+              <div class="col-md-3 bg-black text-center flex-col" id="cnt-words">
+                <p>0 word</p>
+              </div>
+              <div class="col-md-3 bg-black text-center flex-col" id="cnt-chars">
+                <p>0 char</p>
+              </div>
+              <div class="col-md-3 bg-black text-center flex-col">
+                <p>english</p>
+              </div>
+            </div>
+          </div>
+          <div class="spacer"></div>
+          <div class="col-md-2 text-center my-auto">
+            <div class="d-flex flex-column justify-content-center">
+              <!-- <i class="fa-2x fa-solid fa-circle-check progress-icon" hidden></i> -->
+              <input class="toggle-load-icon" type="checkbox" id="check" disabled>
+              <label class="progress-icon" for="check" style="display:none">
+                 <div class="check-icon"></div>
+              </label>
+              <button class="button summarize-button" type="submit" form="input_form">
+                summarize
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+              </button>
+            </div>
+            <h4 class="mt-2 pt-2" id="load-noti" style="display:none">Generating</h4>
+          </div>
+          <div class="spacer"></div>
+          <div class="col-md-4 output-field">
+            <div class="row mb-4 flex-col-50">
+              <div class="col-md-8">
+                <h4 class="main-heading">
+                  summary here
+                </h4>
+              </div>
+              <div class="col-md-4 switch-format">
+                <div class="toggle">
+                  <input type="radio" name="lengSel" value="short" id="shortSum" checked="checked" />
+                  <label for="shortSum">short</label>
+                  <input type="radio" name="lengSel" value="long" id="longSum" />
+                  <label for="longSum">long</label>
+                </div>
+                <!-- <button type="button" class="floated btn btn-outline-dark btn-sm btn-block" id="short_button">short</button>
+                <button type="button" class="floated btn btn-outline-dark btn-sm btn-block" id="long_button">long</button> -->
+                <!-- <button class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-2xs">Expand</i></button> -->
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <textarea type="text" class="output-nlp-text no-border shadow-none" id="output_text"
+                placeholder="Output will be shown here >" aria-label="Output Document" disabled></textarea> 
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script>
+      // ======= INPUT FIELD (FORM CONTROL) VALIDATION =======
+      var runOnce = false;
+      var short_summary = '';
+      var long_summary = '';
+
+      (function () {
+        'use strict'
+        const forms = document.querySelectorAll('.requires-validation')
+        Array.from(forms)
+          .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+              form.classList.add('was-validated')
+            }, false)
+          })
+      })()
+
+      // ======= RESET INPUT FIELD WHEN USER CLICKED AT IT (HAS RAN ONCE) =======
+      $(function () {
+        $('#input_text').on("input", function () {
+          if (runOnce == true) {
+            $(".progress-icon").hide();
+            $("#load-noti").hide();
+            $(".summarize-button").fadeIn();
+          }
+        });
+      });
+
+      $('#shortSum').on("click", function () {
+        var outputField = document.getElementById("output_text");
+        outputField.innerHTML = short_summary;
+      });
+      $('#longSum').on("click", function () {
+        var outputField = document.getElementById("output_text");
+        outputField.innerHTML = long_summary;
+      });
+
+      setInterval(function (e) {
+        var strText = jQuery.trim($('#input_text').val());
+        var cntChar = strText.replace( /[\r\n]+/gm, "" ).length;
+        var cntWord = strText.split(/[\s\.\?]+/).length;
+        var cntPara = strText.split("\n\n").length;
+        var cntPara2 = strText.split("/\n\s/g").length;
+        var postFix = '';
+
+        if (strText == '') {
+          cntWord = 0;
+          cntLine = 0;
+          cntPara = 0;
+        }
+
+        $('#cnt-paras').children('p').text(cntPara + (cntPara > 1 ? " pars" : " par"));
+        $('#cnt-words').children('p').text(cntWord + (cntWord > 1 ? " words" : " word"));
+        $('#cnt-chars').children('p').text(cntChar + (cntChar > 1 ? " chars" : " char"));
+      }, 100);
+
+      // ======= COMMUNICATE WITH FLSAK BACK END TO RUN ML TASK =======
+      $(document).on('submit', '#input_form', function (e) {
+        var outputField = document.getElementById("output_text");
+        var data = { "input_text": $("#input_text").val() };
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '/summarize',
+          data: JSON.stringify(data),
+          contentType: "application/json",
+          dataType: 'json',
+          beforeSend: function () {
+            $("#check").attr('checked', false);
+            $("#input_text").attr("readonly", true);
+            $(".summarize-button").hide();
+            $(".progress-icon").fadeIn();
+            $("#load-noti").fadeIn();
+          },
+          success: function (response) {
+            short_summary = response.short;
+            long_summary = response.long;
+            outputField.innerHTML = short_summary;
+          },
+          complete: function (response) {
+            $("#check").attr('checked', true);
+            $("#input_text").attr("readonly", false);
+            $("#load-noti").text("Completed")
+            runOnce = true;
+          },
+        })
+      });
+
+    </script>
+  </body>
+</html>
