@@ -79,6 +79,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+[![Summary Web Application][product-screenshot]](https://huggingface.co/spaces/datien228/text-summarizer)
+
 The main scope of this project is to build a minimalist web application that summarize the documents input by user. The summarization can be extractive or abstractive, depending on the aim of the application. The development of the web application involve simple one-page design, elements and colors since I love minimalistic. For the Natural Language Processing (NLP) model, I choose to use the Sequence-2-Sequence model for summarization task. Among the models that I have investigated, BART (Bidirectional Auto-Regressive Transformers) from Facebook has a very good performance in providing abstractive summary (or extractive, if needed). Therefore, I decide to use it for my web application.
 
 The model can be easily found from [Hungging Face Hub](https://huggingface.co/models). _Hugging Face is a community and data science platform that provides: Tools that enable users to build, train and deploy ML models based on open source (OS) code and technologies_. It has been risen in the recent years for providing such helpful environment where learners can tried out their models and make inferences. Hugging Face also provide Auto Train service, however, I choose to fine-tune a pre-trained model by myself to see how the model works, and to get familiar with the [Transformers](https://huggingface.co/docs/transformers/main/en/index) and the application deployment.
@@ -140,6 +142,19 @@ The application was deployed on [Text Summarizer](https://huggingface.co/spaces/
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Add Changelog
+- [ ] Create pages `creator`, `development` and `feedback`
+- [ ] Fine-tune the model on Vietnamese language
+- [ ] Optimize the website's code (optional)
+
+
+See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 <!-- LICENSE -->
 ## License
@@ -186,4 +201,4 @@ Here is the list of resources that I have found during the research and I believ
 [license-url]: https://https://github.com/anhtien228/web-based-ai/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/atien228/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/project.png
