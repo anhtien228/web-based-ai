@@ -24,8 +24,10 @@ def recommend():
         # Call the function summarize to run the text summarization
         try:
             short_output_summary, long_output_summary = summarize(input_text)
+            response = jsonify({'short': short_output_summary.strip(), 'long': long_output_summary.strip()})
+            response.headers.add('Access-Control-Allow-Origin', '*')
             # Pass output summary to the output template
-            return jsonify({'short': short_output_summary.strip(), 'long': long_output_summary.strip()})
+            return response
 
         except Exception as e:
             return render_template('index.html', query=e)
