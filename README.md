@@ -111,6 +111,8 @@ BART model was introduced at Facebook Research at ACL 2020. It has the ability t
 
 The most used BART model would be base-sized BART provided by Facebook. A distilled version of BART has been implemented by many researchers. One remarkable study was conducted by `Sam Shleifer and Alexander M. Rush`, where three distillation approaches direct knowledge distillation, pseudo-labeling, and shrink and fine-tune (SFT), were compared. In this project, I decided to used the distilled BART model by Sam Shleifer (`distilbart-12-6-cnn`) and fine-tuned it on the datasets `multi_news`. Using the pre-trained model only is actually good enough. But as I have mentioned, I'd like to fine-tune and implement it by myself so I could learn something new during the progress.
 
+The fine-tuned model could be viewed via [datien228/distilbart-cnn-12-6-ftn-multi_news](https://huggingface.co/datien228/distilbart-cnn-12-6-ftn-multi_news)
+
 _For more information about BART model and the dataset, please refer to [BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension](https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.8562-6/106373513_3414102562251474_8005430471454563564_n.pdf?_nc_cat=105&ccb=1-7&_nc_sid=ae5e01&_nc_ohc=7lT9fZ6UN2kAX8hIzMr&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT-pEWAFUAr2sylDWGJwd_LnXEB3q9ajv3p3KmRY_EwA9g&oe=62CEF084), [Pre-trained Summarization Distillation](https://arxiv.org/abs/2010.13002) and [multi_news dataset](https://huggingface.co/datasets/multi_news)
 
 #### 2. Web Application
