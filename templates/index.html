@@ -186,36 +186,74 @@
       }, 100);
 
       // ======= COMMUNICATE WITH FLSAK BACK END TO RUN ML TASK =======
-      $(document).on('submit', '#input_form', function (e) {
-        var outputField = document.getElementById("output_text");
-        var data = { "input_text": $("#input_text").val() };
-        e.preventDefault();
-        $.ajax({
-          type: 'POST',
-          url: '/summarize',
-          data: JSON.stringify(data),
-          contentType: "application/json",
-          dataType: 'json',
-          beforeSend: function () {
-            $("#check").attr('checked', false);
-            $("#input_text").attr("readonly", true);
-            $(".summarize-button").hide();
-            $(".progress-icon").fadeIn();
-            $("#load-noti").fadeIn();
-          },
-          success: function (response) {
-            short_summary = response.short;
-            long_summary = response.long;
-            outputField.innerHTML = short_summary;
-          },
-          complete: function (response) {
-            $("#check").attr('checked', true);
-            $("#input_text").attr("readonly", false);
-            $("#load-noti").text("Completed")
-            runOnce = true;
-          },
-        })
+
+      const translateText = async (jsonfile) => {
+        const inferResponse = await fetch(`/summarize?input=${jsonfile}`, {method: 'POST'});
+        const inferJson = await inferResponse.json();
+
+        return inferJson;
+      };
+      
+      const textGenForm = document.querySelector('#input_form');
+
+      textGenForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const textGenParagraph = document.querySelector('#output_text');
+        const textGenInput = document.querySelector('#input_text');
+        $("#check").attr('checked', false);
+        $("#input_text").attr("readonly", true);
+        $(".summarize-button").hide();
+        $(".progress-icon").fadeIn();
+        $("#load-noti").fadeIn();
+
+        // var data = {"input_text": textGenInput.value};
+
+        try {
+          data_out = await translateText(JSON.stringify({"input_text": textGenInput.value}));
+          $("#check").attr('checked', true);
+          $("#input_text").attr("readonly", false);
+          $("#load-noti").text("Completed")
+          runOnce = true;
+          short_summary = data_out.short;
+          long_summary = data_out.long;
+          textGenParagraph.innerHTML = short_summary;
+          
+        } catch (err) {
+          console.error(err);
+        }
       });
+
+      // $(document).on('submit', '#input_form', function (e) {
+      //   var outputField = document.getElementById("output_text");
+      //   var data = { "input_text": $("#input_text").val() };
+      //   e.preventDefault();
+      //   $.ajax({
+      //     type: 'POST',
+      //     url: '/summarize',
+      //     data: JSON.stringify(data),
+      //     contentType: "application/json",
+      //     dataType: 'json',
+      //     beforeSend: function () {
+      //       $("#check").attr('checked', false);
+      //       $("#input_text").attr("readonly", true);
+      //       $(".summarize-button").hide();
+      //       $(".progress-icon").fadeIn();
+      //       $("#load-noti").fadeIn();
+      //     },
+      //     success: function (response) {
+      //       short_summary = response.short;
+      //       long_summary = response.long;
+      //       outputField.innerHTML = short_summary;
+      //     },
+      //     complete: function (response) {
+      //       $("#check").attr('checked', true);
+      //       $("#input_text").attr("readonly", false);
+      //       $("#load-noti").text("Completed")
+      //       runOnce = true;
+      //     },
+      //   })
+      // });
 
     </script>
   </body>
