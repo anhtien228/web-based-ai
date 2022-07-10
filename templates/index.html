@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="summary is a small web application that help users summarizing long documents.">
     <title>summary</title>
+    <link href="{{ url_for('static', filename='assets/favicon.png') }}" rel="icon" type="image/png" sizes="16x16">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='assets/css/all.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- <script src="{{ url_for('static', filename='js/style.js') }}"></script> -->
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
       <ul class="nav nav-tabs">
         <li><a href="#" class="link link--io">creator</a></li>
         <li><a href="#" class="link link--io">development</a></li>
@@ -19,9 +21,11 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 my-4">
-            <h3 class="text-center page-title">
-              summary
-            </h3>
+            <a href="{{ url_for('home') }}" class="link-title">
+              <h1 class="text-center page-title">
+                summary
+              </h1>
+            </a>
           </div>
         </div>
         <div class="row mt-4">
@@ -29,9 +33,10 @@
           <div class="col-md-4 input-field">
             <div class="row mb-4 flex-col-50">
               <div class="col-md-8">
-                <h4 class="main-heading">
+                <h2 class="main-heading">
                   put your text here
-                </h4>
+                </h2>
+                <p>You can change document's language</p>
               </div>
               <div class="col-md-4 switch-format">
                 <div class="toggle">
@@ -85,15 +90,16 @@
                 <div class="button__vertical"></div>
               </button>
             </div>
-            <h4 class="mt-2 pt-2" id="load-noti" style="display:none">Generating</h4>
+            <h2 class="mt-2 pt-2" id="load-noti" style="display:none">Generating</h2>
           </div>
           <div class="spacer"></div>
           <div class="col-md-4 output-field">
             <div class="row mb-4 flex-col-50">
               <div class="col-md-8">
-                <h4 class="main-heading">
+                <h2 class="main-heading">
                   summary here
-                </h4>
+                </h2>
+                <p>You can change summary's length</p>
               </div>
               <div class="col-md-4 switch-format">
                 <div class="toggle">
@@ -212,4 +218,33 @@
 
     </script>
   </body>
+  <footer class="bg-light text-center text-dark mt-auto">
+    <div class="container mt-3 pb-0">
+      <section class="mb-3">
+        <h4>Processing speed depends on the document's length</h4>
+        <!-- Linkedin -->
+        <!-- <a class="btn btn-sm btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-linkedin-in small"></i
+        ></a> -->
+  
+        <!-- Github -->
+        <!-- <a class="btn btn-sm btn-light btn-floating m-1 small" href="#!" role="button"
+          ><i class="fab fa-github small"></i
+        ></a> -->
+      </section>
+    </div>
+  
+    <!-- Copyright -->
+    <div class="text-center p-2 bg-dark">
+      <p class="text-white">
+        Created by
+        <a class="link-light" href="https://github.com/anhtien228" style="font-weight: 600;">Anh-Tien Doan</a>
+        in 2022
+      </p>
+      <a class="link-secondary" href="https://flask.palletsprojects.com/en/2.1.x/" style="transition: 0.2s ease-in-out;">
+        <p>built with Flask</p>
+      </a>
+    </div>
+    <!-- Copyright -->
+  </footer>
 </html>
