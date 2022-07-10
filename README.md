@@ -107,7 +107,7 @@ For the web developement, I use Flask since it is easy to use and compatible wit
 
 #### 1. Model and Datasets
 
-BART model was introduced at Facebook Research at ACL 2020. It has the ability to generate text based on the information from the encoder, i.e it specifically used for **sequence-to-sequence** problem compared to BERT (Bidirectional Encoder Representations from Transformers) which only pretrains on encoder, not decoder.
+BART model was introduced at Facebook Research at ACL 2020. It has the ability to generate text based on the information from the encoder, i.e it is specifically used for **sequence-to-sequence** problem compared to BERT (Bidirectional Encoder Representations from Transformers) which only pretrains on encoder, not decoder.
 
 The most used BART model would be base-sized BART provided by Facebook. A distilled version of BART has been implemented by many researchers. One remarkable study was conducted by `Sam Shleifer and Alexander M. Rush`, where three distillation approaches direct knowledge distillation, pseudo-labeling, and shrink and fine-tune (SFT), were compared. In this project, I decided to used the distilled BART model by Sam Shleifer (`distilbart-12-6-cnn`) and fine-tuned it on the datasets `multi_news`. Using the pre-trained model only is actually good enough. But as I have mentioned, I'd like to fine-tune and implement it by myself so I could learn something new during the progress.
 
