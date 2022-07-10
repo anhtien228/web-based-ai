@@ -79,7 +79,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Summary Web Application][product-screenshot]
+![Summary Web Application](/images/project.png "Web application interface")
 
 The main scope of this project is to build a minimalist web application that summarize the documents input by user. The summarization can be extractive or abstractive, depending on the aim of the application. The development of the web application involve simple one-page design, elements and colors since I love minimalistic. For the Natural Language Processing (NLP) model, I choose to use the Sequence-2-Sequence model for summarization task. Among the models that I have investigated, BART (Bidirectional Auto-Regressive Transformers) from Facebook has a very good performance in providing abstractive summary (or extractive, if needed). Therefore, I decide to use it for my web application.
 
@@ -206,4 +206,3 @@ Here is the list of resources that I have found during the research and I believ
 [license-url]: https://https://github.com/anhtien228/web-based-ai/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/atien228/
-[product-screenshot]: images/project.png
