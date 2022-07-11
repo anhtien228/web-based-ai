@@ -2,26 +2,42 @@
 <html lang="en" class="js">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
     <meta name="description" content="summary is a small web application that help users summarizing long documents.">
     <title>summary</title>
-    <link href="{{ url_for('static', filename='assets/favicon.png') }}" rel="icon" type="image/png" sizes="16x16">
+    <link href="static/assets/favicon.png" rel="icon" type="image/png" sizes="16x16">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='assets/css/all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/assets/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- <script src="{{ url_for('static', filename='js/style.js') }}"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
       <ul class="nav nav-tabs">
-        <li><a href="https://github.com/anhtien228" class="link link--io">creator</a></li>
-        <li><a href="https://github.com/anhtien228/web-based-ai" class="link link--io">project</a></li>
-        <li><a href="#" class="link link--io">feedback</a></li>
+        <li>
+          <a href="https://github.com/anhtien228"
+          rel="noreferrer"
+          target="_blank"
+          class="link link--io">
+          creator
+        </a></li>
+        <li>
+          <a href="https://github.com/anhtien228/web-based-ai"
+          rel="noreferrer"
+          target="_blank"
+          class="link link--io">
+          project
+        </a></li>
+        <li>
+          <a href="#open-modal"
+          class="link link--io">
+            feedback
+          </a></li>
       </ul>
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 my-4">
-            <a href="{{ url_for('home') }}" class="link-title">
+            <a href="index.html" class="link-title">
               <h1 class="text-center page-title">
                 summary
               </h1>
@@ -231,36 +247,55 @@
         }
       });
 
-      // $(document).on('submit', '#input_form', function (e) {
-      //   var outputField = document.getElementById("output_text");
-      //   var data = { "input_text": $("#input_text").val() };
-      //   e.preventDefault();
-      //   $.ajax({
-      //     type: 'POST',
-      //     url: '/summarize',
-      //     data: JSON.stringify(data),
-      //     contentType: "application/json",
-      //     dataType: 'json',
-      //     beforeSend: function () {
-      //       $("#check").attr('checked', false);
-      //       $("#input_text").attr("readonly", true);
-      //       $(".summarize-button").hide();
-      //       $(".progress-icon").fadeIn();
-      //       $("#load-noti").fadeIn();
-      //     },
-      //     success: function (response) {
-      //       short_summary = response.short;
-      //       long_summary = response.long;
-      //       outputField.innerHTML = short_summary;
-      //     },
-      //     complete: function (response) {
-      //       $("#check").attr('checked', true);
-      //       $("#input_text").attr("readonly", false);
-      //       $("#load-noti").text("Completed")
-      //       runOnce = true;
-      //     },
-      //   })
-      // });
+      window.addEventListener("load", function() {
+        const form = document.getElementById('feedback_form');
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          const data = new FormData(form);
+          const action = e.target.action;
+          fetch(action, {
+            method: 'POST',
+            body: data,
+          })
+          .then(() => {
+            $("#submit-alert").fadeIn(1000).delay(4000).fadeOut(1000);
+          })
+        });
+      });
+      
+      /*
+      $(document).on('submit', '#input_form', function (e) {
+        var outputField = document.getElementById("output_text");
+        var data = { "input_text": $("#input_text").val() };
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '/summarize',
+          data: JSON.stringify(data),
+          contentType: "application/json",
+          dataType: 'json',
+
+          beforeSend: function () {
+            $("#check").attr('checked', false);
+            $("#input_text").attr("readonly", true);
+            $(".summarize-button").hide();
+            $(".progress-icon").fadeIn();
+            $("#load-noti").fadeIn();
+          },
+          success: function (response) {
+            short_summary = response.short;
+            long_summary = response.long;
+            outputField.innerHTML = short_summary;
+          },
+          complete: function (response) {
+            $("#check").attr('checked', true);
+            $("#input_text").attr("readonly", false);
+            $("#load-noti").text("Completed")
+            runOnce = true;
+          },
+        })
+      });
+      */
 
     </script>
   </body>
@@ -293,4 +328,67 @@
     </div>
     <!-- Copyright -->
   </footer>
+  <!-- Feedback modal window -->
+  <div id="open-modal" class="modal-window">
+    <div>
+      <a href="#" title="Close" class="modal-close">Close</a>
+      <h1>Feedback</h1>
+      <div class="modal-header">Please give a rate from your experience</div>
+      <br>
+      <form id="feedback_form" method="post" action="https://script.google.com/macros/s/AKfycbySioanqfzdUwmiXwwy2iKgIjO20ggc_5GvUTJohiGtY64XUHAw6s9aBcQr7XXeil_Low/exec">
+        <div class="modal-header"><b>Processing speed</b></div>
+        <div class="likert-scale">
+          <input type="radio" name="ProcessingSpeed" value="1" id="spd1"/>
+          <label for="spd1">1</label>
+          <input type="radio" name="ProcessingSpeed" value="2" id="spd2"/>
+          <label for="spd2">2</label>
+          <input type="radio" name="ProcessingSpeed" value="3" id="spd3" checked="checked" />
+          <label for="spd3">3</label>
+          <input type="radio" name="ProcessingSpeed" value="4" id="spd4"/>
+          <label for="spd4">4</label>
+          <input type="radio" name="ProcessingSpeed" value="5" id="spd5"/>
+          <label for="spd5">5</label>
+        </div>
+        <div class="modal-header"><b>Text coherent</b></div>
+        <div class="likert-scale">
+          <!-- <label><input name="coherent" type="radio" value="1"/><span>1</span></label>
+          <label><input name="coherent" type="radio" value="2"/><span>2</span></label>
+          <label><input name="coherent" type="radio" value="3"/><span>3</span></label>
+          <label><input name="coherent" type="radio" value="4"/><span>4</span></label>
+          <label><input name="coherent" type="radio" value="5"/><span>5</span></label> -->
+          <input type="radio" name="TextCoherent" value="1" id="coh1"/>
+          <label for="coh1">1</label>
+          <input type="radio" name="TextCoherent" value="2" id="coh2"/>
+          <label for="coh2">2</label>
+          <input type="radio" name="TextCoherent" value="3" id="coh3" checked="checked" />
+          <label for="coh3">3</label>
+          <input type="radio" name="TextCoherent" value="4" id="coh4"/>
+          <label for="coh4">4</label>
+          <input type="radio" name="TextCoherent" value="5" id="coh5"/>
+          <label for="coh5">5</label>
+        </div>
+        <div class="modal-header"><b>Web design</b></div>
+        <div class="likert-scale">
+          <input type="radio" name="WebDesign" value="1" id="des1"/>
+          <label for="des1">1</label>
+          <input type="radio" name="WebDesign" value="2" id="des2"/>
+          <label for="des2">2</label>
+          <input type="radio" name="WebDesign" value="3" id="des3" checked="checked" />
+          <label for="des3">3</label>
+          <input type="radio" name="WebDesign" value="4" id="des4"/>
+          <label for="des4">4</label>
+          <input type="radio" name="WebDesign" value="5" id="des5"/>
+          <label for="des5">5</label>
+        </div>
+      </form>
+      <div class="mt-4" style="text-align:center;">
+        <button class="btn btn-sm btn-outline-dark btn-submit" type="submit" form="feedback_form">
+          <p>
+            Submit
+          </p>
+        </button>    
+      </div>
+      <div id="submit-alert" style="text-align:center; color: green; display: none;">Success!</div>
+    </div>
+  </div>
 </html>

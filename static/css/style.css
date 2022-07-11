@@ -1,14 +1,17 @@
-html, body {
-  --def: #fff; 	
-	--inv: #1d1d1d;
-  min-height:100%;
-  max-height:100%;
-  height:100%;
-  background:#fff;
+html,
+body {
+  --def: #fff;
+  --inv: #1d1d1d;
+  min-height: 100vh;
+  /* max-height:100%; */
+  height: 100vh;
+  background: #fff;
 }
 
-*, *:before, *:after {
-	box-sizing: border-box;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 * {
@@ -31,7 +34,7 @@ html, body {
 .link-title {
   cursor: pointer;
   color: #1d1d1d;
-  transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
+  transition: 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
   transition-property: color, opacity;
 }
 
@@ -43,15 +46,21 @@ h1 {
   font-size: 2.0vw;
   font-family: "Manrope Extra Bold";
 }
-h2, h3 {
+
+h2,
+h3 {
   font-size: 2.5vh;
   font-family: "Manrope Bold";
+  letter-spacing: -1px;
 }
-h4, p {
+
+h4,
+p {
   font-size: 1.5vmin;
   font-family: "Manrope Light";
   margin: 0
 }
+
 a {
   text-decoration: none;
 }
@@ -61,13 +70,14 @@ a {
   padding-bottom: 20px
 }
 
-.input-nlp-text, .output-nlp-text {
+.input-nlp-text,
+.output-nlp-text {
   color: #1d1d1d !important;
   font-family: "Manrope Light";
   font-size: 2vmin;
   height: 50vh;
   width: 100%;
-  resize: none !important;  
+  resize: none !important;
 }
 
 .form-control:focus {
@@ -98,27 +108,31 @@ a {
   height: 3em;
   width: 3em;
   display: inline-block;
-  border: 2px solid rgba(255,255,255,0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   border-left-color: #1d1d1d;
   animation: rotate 1.2s linear infinite;
 }
 
 @keyframes rotate {
-  50%{
+  50% {
     border-left-color: #1d1d1d;
   }
-  75%{
+
+  75% {
     border-left-color: #1d1d1d;
   }
-  100%{
+
+  100% {
     transform: rotate(360deg);
   }
 }
-.progress-icon .check-icon{
+
+.progress-icon .check-icon {
   display: none;
 }
-.progress-icon .check-icon:after{
+
+.progress-icon .check-icon:after {
   position: absolute;
   content: "";
   top: 50%;
@@ -131,35 +145,42 @@ a {
   transform-origin: left top;
   animation: check-icon 0.8s ease;
 }
+
 @keyframes check-icon {
-  0%{
+  0% {
     height: 0;
     width: 0;
     opacity: 1;
   }
-  20%{
+
+  20% {
     height: 0;
     width: 0.75em;
     opacity: 1;
   }
-  40%{
+
+  40% {
     height: 1.5em;
     width: 0.75em;
     opacity: 1;
   }
-  100%{
+
+  100% {
     height: 1.5em;
     width: 0.75em;
     opacity: 1;
   }
 }
+
 .toggle-load-icon {
   display: none;
 }
-.toggle-load-icon:checked ~ .progress-icon .check-icon{
+
+.toggle-load-icon:checked~.progress-icon .check-icon {
   display: block;
 }
-.toggle-load-icon:checked ~ .progress-icon {
+
+.toggle-load-icon:checked~.progress-icon {
   animation: none;
   border-color: #1d1d1d;
   transition: border 0.5s ease-out;
@@ -173,36 +194,36 @@ a {
 
 .js .loading::before,
 .js .loading::after {
-    content: '';
-    position: fixed;
-    z-index: 1000;
+  content: '';
+  position: fixed;
+  z-index: 1000;
 }
 
 .js .loading::before {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-bg);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
 }
 
 .js .loading::after {
-    top: 50%;
-    left: 50%;
-    width: 60px;
-    height: 60px;
-    margin: -30px 0 0 -30px;
-    border-radius: 50%;
-    opacity: 0.4;
-    background: var(--color-link);
-    animation: loaderAnim 0.7s linear infinite alternate forwards;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: var(--color-link);
+  animation: loaderAnim 0.7s linear infinite alternate forwards;
 }
 
 @keyframes loaderAnim {
-    to {
-        opacity: 1;
-        transform: scale3d(0.5, 0.5, 1);
-    }
+  to {
+    opacity: 1;
+    transform: scale3d(0.5, 0.5, 1);
+  }
 }
 
 .nav-tabs {
@@ -225,7 +246,7 @@ a {
   padding-left: 0;
 }
 
-.nav-tabs > li {
+.nav-tabs>li {
   line-height: 5rem;
   display: block;
   padding: 9.6px 16px;
@@ -233,7 +254,7 @@ a {
   list-style-type: none;
 }
 
-.nav-tabs > li  > a {
+.nav-tabs>li>a {
   font-family: "Manrope Regular";
   color: #1d1d1d;
   font-size: 2vmin;
@@ -257,25 +278,25 @@ a {
   padding-right: 0;
 }
 
-.nav-tabs-r > li {
+.nav-tabs-r>li {
   line-height: 5rem;
   display: block;
   padding: 0.6rem 3rem;
   list-style-type: none;
 }
 
-.nav-tabs-r > li  > a {
+.nav-tabs-r>li>a {
   font-family: "Manrope Light";
   color: #1d1d1d;
   font-size: 2vmin;
 }
 
 li {
-  list-style:none
+  list-style: none
 }
 
-ul {    
-  margin:0
+ul {
+  margin: 0
 }
 
 textarea::-webkit-scrollbar {
@@ -284,8 +305,10 @@ textarea::-webkit-scrollbar {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 textarea {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .link {
@@ -347,8 +370,10 @@ textarea {
   margin-bottom: 1em;
 }
 
-.input-field, .output-field {
-  padding: 0rem 2rem 0rem 2rem; /*top right bottom left*/
+.input-field,
+.output-field {
+  padding: 0rem 2rem 0rem 2rem;
+  /*top right bottom left*/
 }
 
 .button {
@@ -358,10 +383,10 @@ textarea {
   position: relative;
   padding: 1.5em 3em;
   margin: auto;
-  text-align:center;
+  text-align: center;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 0;
   background: transparent;
   color: #1d1d1d;
@@ -376,10 +401,13 @@ textarea {
   box-shadow: inset 0 0 0 var(--border-size) currentcolor;
   transition: background 0.8s ease;
 }
+
 .button:hover {
   background: rgba(100, 0, 0, 0.03);
 }
-.button__horizontal, .button__vertical {
+
+.button__horizontal,
+.button__vertical {
   position: absolute;
   top: var(--horizontal-offset, 0);
   right: var(--vertical-offset, 0);
@@ -388,36 +416,44 @@ textarea {
   transition: transform 0.8s ease;
   will-change: transform;
 }
-.button__horizontal::before, .button__vertical::before {
+
+.button__horizontal::before,
+.button__vertical::before {
   content: "";
   position: absolute;
   border: inherit;
 }
+
 .button__horizontal {
   --vertical-offset: calc(var(--offset) * -1);
   border-top: var(--border-size) solid currentcolor;
   border-bottom: var(--border-size) solid currentcolor;
 }
+
 .button__horizontal::before {
   top: calc(var(--vertical-offset) - var(--border-size));
   bottom: calc(var(--vertical-offset) - var(--border-size));
   left: calc(var(--vertical-offset) * -1);
   right: calc(var(--vertical-offset) * -1);
 }
+
 .button:hover .button__horizontal {
   transform: scaleX(0);
 }
+
 .button__vertical {
   --horizontal-offset: calc(var(--offset) * -1);
   border-left: var(--border-size) solid currentcolor;
   border-right: var(--border-size) solid currentcolor;
 }
+
 .button__vertical::before {
   top: calc(var(--horizontal-offset) * -1);
   bottom: calc(var(--horizontal-offset) * -1);
   left: calc(var(--horizontal-offset) - var(--border-size));
   right: calc(var(--horizontal-offset) - var(--border-size));
 }
+
 .button:hover .button__vertical {
   transform: scaleY(0);
 }
@@ -430,14 +466,16 @@ textarea {
   flex-flow: row nowrap;
   justify-content: flex-end;
   align-items: stretch;
-  }
-  .toggle input {
+}
+
+.toggle input {
   width: 0;
   height: 0;
   position: absolute;
   left: -9999px;
-  }
-  .toggle input + label {
+}
+
+.toggle input+label {
   margin: 0;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
@@ -449,157 +487,368 @@ textarea {
   font-size: 0.6rem;
   line-height: 75%;
   text-align: center;
-  /* box-shadow: 0 0 0 rgba(255, 255, 255, 0); */
   transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
-  /* ADD THESE PROPERTIES TO SWITCH FROM AUTO WIDTH TO FULL WIDTH */
-  /*flex: 0 0 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  */
-  /* ----- */
-  }
-  .toggle input + label:first-of-type {
+}
+
+.toggle input+label:first-of-type {
   border-radius: 0px 0 0 0px;
   border-right: none;
-  }
-  .toggle input + label:last-of-type {
+}
+
+.toggle input+label:last-of-type {
   border-radius: 0 0px 0px 0;
   border-left: none;
-  }
-  .toggle input:hover + label {
+}
+
+.toggle input:hover+label {
   border-color: #1d1d1d;
-  }
-  .toggle input:checked + label {
+}
+
+.toggle input:checked+label {
   background-color: #1d1d1d;
   color: #fff;
   /* box-shadow: 0 0 10px rgba(102, 179, 251, .5); */
   border-color: #1d1d1d;
   z-index: 1;
-  }
-  /* .toggle input:focus + label {
-  outline: dotted 1px #ccc;
-  outline-offset: 0.45rem;
-  } */
+}
 
-  .spacer {
+.spacer {
+  display: none;
+}
+
+.modal-window {
+  font-family: 'Manrope Regular';
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.modal-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window>div {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: white;
+}
+
+.modal-window header {
+  font-weight: bold;
+}
+
+.modal-window h1 {
+  font-size: 120%;
+  margin: 0 0 15px;
+}
+
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+
+.modal-close:hover {
+  color: black;
+}
+
+.modal-window>div {
+  border: 1px solid #1d1d1d94;
+  border-radius: 1rem;
+}
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+.likert {
+  --likert-rows: 5;
+  display: inline-grid;
+  max-width: 100%;
+  gap: 1em;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(var(--likert-rows), minmax(0, 1fr));
+}
+
+.likert label {
+  aspect-ratio: 1;
+}
+
+@media only screen and (max-width: 680px) {
+  .likert {
+    --likert-rows: 5;
+    display: grid;
+    max-width: 680px;
+    gap: 1em;
+    grid-template-columns: repeat(var(--likert-rows), minmax(0, 1fr));
+  }
+
+  .likert label {
+    aspect-ratio: 1;
+  }
+}
+
+.likert input {
+  max-width: 250px;
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.likert span {
+  border-radius: 5px;
+  display: flex;
+  font-size: 80%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  background: white;
+  outline: #1d1d1d94 solid 1px;
+  transition: background .2s ease-in-out;
+}
+
+.likert input:checked+span {
+  background: #1d1d1d;
+  color: white;
+  outline: #1d1d1d solid 1px;
+}
+
+.likert input:focus+span {
+  outline: #1d1d1d94 solid 1px;
+}
+
+.likert span:hover {
+  background: #1d1d1d;
+  color: white;
+  outline: #1d1d1d94 solid 1px;
+}
+
+.likert-scale {
+  margin: 0 0 10px;
+  box-sizing: border-box;
+  font-size: 0;
+  display: flex;
+  /* flex-flow: row nowrap; */
+  flex-wrap: wrap;
+  overflow: hidden;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.likert-scale input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -9999px;
+}
+
+.likert-scale input+label {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  flex-grow: 2;
+  border: solid 1px rgb(207, 207, 207);
+  border-collapse: collapse;
+  background-color: #fff;
+  font-family: "Manrope Regular";
+  font-size: 0.8rem;
+  line-height: 75%;
+  text-align: center;
+  transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.likert-scale input+label:first-of-type {
+  border-radius: 0px 0 0 0px;
+}
+
+.likert-scale input+label:last-of-type {
+  border-radius: 0 0px 0px 0;
+}
+
+.likert-scale input:hover+label {
+  border-color: #1d1d1d;
+}
+
+.likert-scale input:checked+label {
+  background-color: #1d1d1d;
+  color: #fff;
+  /* box-shadow: 0 0 10px rgba(102, 179, 251, .5); */
+  border-color: #1d1d1d;
+  z-index: 1;
+}
+
+.btn-submit {
+  transition: .3s all ease;
+  font-size: 12px;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 864px) {
+  .toggle input+label {
+    /* padding: 0.75rem 0.25rem; */
+    flex: 0 0 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.4rem;
+  }
+
+  .likert-scale input+label {
+    /* padding: 0.75rem 0.25rem; */
+    flex: 0 0 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    flex-grow: 2;
+  }
+
+  h1 {
+    font-size: 2.5vh;
+    font-family: "Manrope Extra Bold";
+    letter-spacing: -2px;
+  }
+
+  h2,
+  h3 {
+    font-size: 2.0vh;
+    font-family: "Manrope Bold";
+  }
+
+  h4,
+  p {
+    font-size: 2.5vmin;
+  }
+
+  .input-nlp-text,
+  .output-nlp-text {
+    font-size: 1.5vh;
+  }
+
+  .row {
+    margin-bottom: 0 !important;
+  }
+
+  #input_form {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  #input_text {
+    max-height: 20vh;
+  }
+
+  #output_text {
+    max-height: 15vh;
+  }
+
+  .nav-tabs {
     display: none;
   }
 
-  @media (max-width: 864px) {
-
-    .toggle input + label {
-      /* padding: 0.75rem 0.25rem; */
-      flex: 0 0 10%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 0.4rem;
-    }
-
-    h1 {
-      font-size: 2.5vh;
-      font-family: "Manrope Extra Bold";
-      letter-spacing: -2px;
-    }
-    
-    h2, h3 {
-      font-size: 2.0vh;
-      font-family: "Manrope Bold";
-    }
-
-    h4, p {
-      font-size: 1.5vmin;
-    }
-
-    .input-nlp-text, .output-nlp-text {
-      font-size: 1.5vh;
-    }
-
-    .row {
-      margin-bottom: 0 !important;
-    }
-
-    #input_form {
-      margin-bottom: 1rem;
-    }
-
-    #input_text {
-      max-height: 20vh;
-    }
-
-    #output_text {
-      max-height: 15vh;
-    }
-
-    .nav-tabs {
-      display: none;  
-    }
-
-    .flex-col {
-      flex-basis: 25%;
-    }
-
-    .flex-col-50 {
-      justify-content: space-between;
-    }
-
-    .flex-col-50 div {
-      flex-basis: 50%;
-    }
-
-    .spacer {
-      display: inline-block;
-    }
+  .flex-col {
+    flex-basis: 25%;
   }
+
+  .flex-col-50 {
+    justify-content: space-between;
+  }
+
+  .flex-col-50 div {
+    flex-basis: 50%;
+  }
+
+  .spacer {
+    display: inline-block;
+  }
+
+  .modal-window > div {
+    max-width: 80vw;
+  }
+
+  .modal-window .modal-header {
+    font-size: 80%;
+  }
+}
 
 /*======================== FONT ===============================*/
 @font-face {
-    font-family: "Gilroy Regular";
-    src: url("../fonts/gilroy-regular.otf") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "Gilroy Medium";
-    src: url("../fonts/gilroy_medium.otf") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "Gilroy Bold";
-    src: url("../fonts/gilroy-bold.otf") format("opentype");
-  }
+  font-family: "Gilroy Regular";
+  src: url("../fonts/gilroy-regular.otf") format("opentype");
+}
 
-  @font-face {
-    font-family: "Manrope Bold";
-    src: url("../fonts/Manrope-Bold.otf") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "Manrope Extra Bold";
-    src: url("../fonts/Manrope-ExtraBold.otf") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "Manrope Extra Light";
-    src: url("../fonts/Manrope-ExtraLight.otf") format("opentype");
-  }
+@font-face {
+  font-family: "Gilroy Medium";
+  src: url("../fonts/gilroy_medium.otf") format("opentype");
+}
 
-  @font-face {
-    font-family: "Manrope Light";
-    src: url("../fonts/Manrope-Light.otf") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "Manrope Medium";
-    src: url("../fonts/Manrope-Medium.otf") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "Manrope Regular";
-    src: url("../fonts/Manrope-Regular.otf") format("opentype");
-  }
+@font-face {
+  font-family: "Gilroy Bold";
+  src: url("../fonts/gilroy-bold.otf") format("opentype");
+}
 
-  @font-face {
-    font-family: "Manrope Semi Bold";
-    src: url("../fonts/Manrope-SemiBold.otf") format("opentype");
-  }
+@font-face {
+  font-family: "Manrope Bold";
+  src: url("../fonts/Manrope-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope Extra Bold";
+  src: url("../fonts/Manrope-ExtraBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope Extra Light";
+  src: url("../fonts/Manrope-ExtraLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope Light";
+  src: url("../fonts/Manrope-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope Medium";
+  src: url("../fonts/Manrope-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope Regular";
+  src: url("../fonts/Manrope-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope Semi Bold";
+  src: url("../fonts/Manrope-SemiBold.otf") format("opentype");
+}
