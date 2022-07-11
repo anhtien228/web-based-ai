@@ -128,7 +128,7 @@ References:
 
 #### 3. Deployment
 
-The web application was implemented by Flask. The repository main branch consists the work used in the development stage. For the deployment code, please refer to `deployment` branch as it has some differences in the paths inside the HTML files compared to that of local deployment.
+The web application was implemented by Flask and the main branch consists the work used in the development/deployment stages. 
 
 The online demo was deployed using Hugging Face Spaces - a platform offer simple way to host ML demo apps directly on our profile.
 
