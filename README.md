@@ -143,7 +143,8 @@ There is no prerequisites for this projects.
 ## Usage
 
 The application was deployed on [Text Summarizer](https://huggingface.co/spaces/datien228/text-summarizer).
-For the embedded version (no Hugging Face interface), please navigate to [Text Summarizer Full](https://hf.space/embed/datien228/text-summarizer/+?__theme=light#)
+
+For the embedded version (no Hugging Face interface), please navigate to [Text Summarizer Full](https://hf.space/embed/datien228/text-summarizer/+?__theme=light#).
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -152,7 +153,7 @@ For the embedded version (no Hugging Face interface), please navigate to [Text S
 ## Roadmap
 
 - [x] Add Changelog
-- [ ] Create pages `creator`, `development` and `feedback`
+- [ ] Add reference links for `creator`, `project` and `feedback` nav items
 - [ ] Fine-tune the model on Vietnamese language
 - [ ] Optimize the website's code (optional)
 
