@@ -188,7 +188,14 @@
       // ======= COMMUNICATE WITH FLSAK BACK END TO RUN ML TASK =======
 
       const translateText = async (jsonfile) => {
-        const inferResponse = await fetch(`/summarize?input=${jsonfile}`, {method: 'POST'});
+        const fetchSettings = {
+          method: 'POST',
+          body: JSON.stringify({"input_text": jsonfile}),
+          headers: {
+            "Content-Type": "application/json"
+          },
+        };
+        const inferResponse = await fetch(`summarize`, fetchSettings);
         const inferJson = await inferResponse.json();
 
         return inferJson;
@@ -210,7 +217,7 @@
         // var data = {"input_text": textGenInput.value};
 
         try {
-          data_out = await translateText(JSON.stringify({"input_text": textGenInput.value}));
+          data_out = await translateText(textGenInput.value);
           $("#check").attr('checked', true);
           $("#input_text").attr("readonly", false);
           $("#load-noti").text("Completed")

@@ -14,28 +14,26 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/summarize', methods=['GET', 'POST'])
+@app.route("/summarize", methods=["POST"])
 def recommend():
     if request.method == "POST":
         # Get form data
         # request_data = request.args.get("input").get_json()
         # input_text = request_data['input_text']
-        request_data = request.args.get("input")
-        input_text = request_data.get_json()['input_text']
+        input_text = request.get_json()['input_text']
+        print(input_text)
 
         # Call the function summarize to run the text summarization
         try:
             short_output_summary, long_output_summary = summarize(input_text)
-            response = make_response(jsonify({'short': short_output_summary.strip(), 'long': long_output_summary.strip()}))
-            response.set_cookie('cookie1', 'value1', samesite='Lax')
-            response.set_cookie('cookie2', 'value2', samesite='None', secure=True)
+            response = jsonify({'short': short_output_summary.strip(), 'long': long_output_summary.strip()})
             # Pass output summary to the output template
             return response
 
         except Exception as e:
             return render_template('index.html', query=e)
 
-    pass
+        pass
 
 def main():
     app.config['TEMPLATES_AUTO_RELOAD'] = True
