@@ -143,6 +143,7 @@ There is no prerequisites for this projects.
 ## Usage
 
 The application was deployed on [Text Summarizer](https://huggingface.co/spaces/datien228/text-summarizer).
+For the embedded version (no Hugging Face interface), please navigate to [Text Summarizer Full](https://hf.space/embed/datien228/text-summarizer/+?__theme=light#)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
