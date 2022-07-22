@@ -175,6 +175,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Linkedin: [atien228](https://www.linkedin.com/in/atien228/)
+
 Email: d.atien228@gmail.com
 
 Project Link: [web-based-ai](https://github.com/anhtien228/web-based-ai)
